@@ -1,4 +1,4 @@
-var APIKey = "c1e47e9d5eb11ce67e07485421770f51";
+var APIKey;
 var apiBase = "api.openweathermap.org/data/2.5/";
 var units = "imperial";
 var city;
