@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    padding: 1rem;
+    background-color: green;
+    color: #ffffff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+.card {
+    margin: 0 0 2rem 2rem;
+    border: .2rem solid green;
+    border-radius: 2rem;
+}
+
+.card-header {
+    padding: 1rem;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.form-label {
+    display: none;
+}
+
+.searchbox-input {
+    width: 25%;
+    font-size: 1.5rem;
+    padding: .5rem;
+}
+
+h3 {
+    color: green;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.searchbox {
+    padding: 1rem;
+    margin: .5rem;
+    width: 70%;
+    border: solid, 1rem;
+    border-radius: .5rem;
+    font-size: 1.25rem;
+}
+.btn {
+    width: 70%;
+    margin: 1rem;
+    padding: .7rem;
+    font-size: 1.25rem;
+    border-radius: .5rem;
+    background-color: green;
+    color: #ffffff;
+}
+
+.current {
+    width: 70%;
+    margin: 0 0 2rem 2rem;
+    border: .2rem solid green;
+    border-radius: 2rem;
+}
+
+#history {
+    width: 25%;
+    padding: 1rem;
+    border: none;
+}
+
+#forecast1 {
+    width: 12%;
+    padding: 1rem;
+}
+
+#forecast2 {
+    width: 12%;
+    padding: 1rem;
+}
+
+#forecast3 {
+    width: 12%;
+    padding: 1rem;
+}
+
+#forecast4 {
+    width: 12%;
+    padding: 1rem;
+}
+
+#forecast5 {
+    width: 12%;
+    padding: 1rem;
+}
