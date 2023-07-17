@@ -45,21 +45,22 @@ var displayCity = function (city, searchTerm) {
     } return;
 }
 
-for (var i = 0; city.length; i++) {
+for (var i = 0; i < city.length; i++) {
     var cityName = city[i].city.name;
 
     var cityEl = document.createElement('p');
     cityEl.classList = "list-item flex-row justify-space-between align-center";
     cityEl.textContent = cityName;
 
-    var headerEl = document.createElement("span");
-    headerEl.textContent = cityName;
+    // var headerEl = document.createElement("span");
+    // headerEl.textContent = cityName;
 
-    cityEl.appendChild(headerEl);
+    // cityEl.appendChild(headerEl);
     
     weatherNowEl.appendChild(cityEl);
-
 }
+
+weatherNowEl.textContent = cityName;
 
 
 
