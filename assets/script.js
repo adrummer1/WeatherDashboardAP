@@ -1,6 +1,6 @@
 var userFormEl = document.querySelector("#form");
 var cityInputEl = document.querySelector("#city");
-var weatherNowEl = document.querySelector("#weather-now");
+var weatherNowEl = document.querySelector(".current");
 var citySearchTerm = document.querySelector("#weather-search")
 var APIKey = "c1e47e9d5eb11ce67e07485421770f51";
 var apiBase = "api.openweathermap.org/data/2.5/";
@@ -50,7 +50,7 @@ for (var i = 0; city.length; i++) {
 
     var cityEl = document.createElement('p');
     cityEl.classList = "list-item flex-row justify-space-between align-center";
-    cityEl.setAttribute(cityName);
+    cityEl.textContent = cityName;
 
     var headerEl = document.createElement("span");
     headerEl.textContent = cityName;
@@ -58,7 +58,10 @@ for (var i = 0; city.length; i++) {
     cityEl.appendChild(headerEl);
     
     weatherNowEl.appendChild(cityEl);
+
 }
+
+
 
 document.getElementById("form").addEventListener("submit", formSubmitHandler);
 

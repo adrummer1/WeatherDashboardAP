@@ -62,7 +62,7 @@ h3 {
     color: #ffffff;
 }
 
-.current {
+.weather-today {
     width: 70%;
     margin: 0 0 2rem 2rem;
     border: .2rem solid green;
