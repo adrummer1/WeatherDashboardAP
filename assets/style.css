@@ -73,7 +73,13 @@ h3 {
 .cityInfo {
     padding: 1rem;
     font-size: 1.5rem;
-    line-height: 2rem;
+    line-height: 2.5rem;
+}
+
+.icon {
+    max-width: 100%;
+    max-height: 100%;
+    padding-left: 2rem;
 }
 
 #history {

@@ -39,47 +39,49 @@ fetch(currentWeather)
     })
 }
 
-var displayCity = function (city, searchTerm) {
+var displayCity = function (city) {
     if (city.length === 0) {
         weatherNowEl.textContent = "City not found.";
     return;
     }
 
     var currentWeatherHTML = document.getElementsByClassName("cityInfo")[0];
-    currentWeatherHTML.append(city.name);
+    var cityName = document.createElement("div");
+        cityName.textContent = city.name;
+        cityName.style.cssText = "color:green;font-size:2rem";
     var weatherDate = document.createElement("div");
-    weatherDate.textContent = currentDate;
+        weatherDate.textContent = currentDate;
     var temp = document.createElement("div");
-    temp.textContent = "Temperature: " + city.main.temp;
+        temp.textContent = "Temperature: " + city.main.temp;
     var humidity = document.createElement("div");
-    humidity.textContent = "Humidity: " + city.main.humidity;
+        humidity.textContent = "Humidity: " + city.main.humidity;
     var wind = document.createElement("div");
-    wind.textContent = "Wind Speed: " + city.wind.speed;
+        wind.textContent = "Wind Speed: " + city.wind.speed;
+    currentWeatherHTML.append(cityName);
     currentWeatherHTML.append(weatherDate);
-    currentWeatherHTML.append(city.weather[0].icon);
     currentWeatherHTML.append(temp);
     currentWeatherHTML.append(humidity);
     currentWeatherHTML.append(wind);
+
+    var iconcode = city.weather[0].icon;
+    var iconurl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
+    $("#weather-icon").attr("src", iconurl);
 };
 
 for (var i = 0; i < city.length; i++) {
     var cityName = city[i].city.name;
-
-    // var cityEl = document.createElement('p');
-    // cityEl.classList = "list-item flex-row justify-space-between align-center";
-    // cityEl.textContent = cityName;
-
-    // var headerEl = document.createElement("span");
-    // headerEl.textContent = cityName;
-
-    // cityEl.appendChild(headerEl);
-    
-    // weatherNowEl.appendChild(cityEl);
 }
 
-// weatherNowEl.textContent = cityName;
+// var citySearch = localStorage.getItem("cityNameSearch")
 
+// function saveCity() {
+//     localStorage.setItem("cityNameSearch", cityInputEl.value)
+//     console.log(localStorage.setItem);
+// }
 
+// for (var i = 0; localStorage.length; i++) {
+//     $("#search-history").append("p" + localStorage.getItem(localStorage.key(i)) + "</p>");
+// }
 
 document.getElementById("form").addEventListener("submit", formSubmitHandler);
 
