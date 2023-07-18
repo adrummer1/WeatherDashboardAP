@@ -29,9 +29,10 @@ h1 {
 }
 
 .searchbox-input {
-    width: 25%;
+    width: 70%;
     font-size: 1.5rem;
     padding: .5rem;
+    margin-left: 1rem
 }
 
 h3 {
@@ -63,10 +64,16 @@ h3 {
 }
 
 .weather-today {
-    width: 70%;
+    width: 65%;
     margin: 0 0 2rem 2rem;
     border: .2rem solid green;
     border-radius: 2rem;
+}
+
+.cityInfo {
+    padding: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
 }
 
 #history {
