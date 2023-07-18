@@ -2,6 +2,7 @@ var userFormEl = document.querySelector("#form");
 var cityInputEl = document.querySelector("#city");
 var weatherNowEl = document.querySelector(".current");
 var citySearchTerm = document.querySelector("#weather-search")
+var history = document.querySelector("#search-history");
 var APIKey = "c1e47e9d5eb11ce67e07485421770f51";
 var apiBase = "api.openweathermap.org/data/2.5/";
 var units = "imperial";
@@ -72,8 +73,18 @@ for (var i = 0; i < city.length; i++) {
     var cityName = city[i].city.name;
 }
 
+function renderCities() {
+    var storedCity = localStorage.getItem("citySearch")
+    if (!city) {
+        return;
+    }
+
+    history.textContent = storedCity;
+}
+
 var citySearch = document.querySelector("#city").value;
 localStorage.setItem("city", citySearch)
+renderCities();
 console.log(localStorage)
 
 document.getElementById("form").addEventListener("submit", formSubmitHandler);
