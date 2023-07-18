@@ -72,16 +72,9 @@ for (var i = 0; i < city.length; i++) {
     var cityName = city[i].city.name;
 }
 
-// var citySearch = localStorage.getItem("cityNameSearch")
-
-// function saveCity() {
-//     localStorage.setItem("cityNameSearch", cityInputEl.value)
-//     console.log(localStorage.setItem);
-// }
-
-// for (var i = 0; localStorage.length; i++) {
-//     $("#search-history").append("p" + localStorage.getItem(localStorage.key(i)) + "</p>");
-// }
+var citySearch = document.querySelector("#city").value;
+localStorage.setItem("city", citySearch)
+console.log(localStorage)
 
 document.getElementById("form").addEventListener("submit", formSubmitHandler);
 
