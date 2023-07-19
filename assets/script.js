@@ -36,6 +36,22 @@ fetch(currentWeather)
             console.log(data);
             displayCity(data);        
             });
+            function forecast(city) {
+                var latitude = "city.coord.lat";
+                var longitude = "city.coord.lon";
+                var forecastWeather = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=" + units;
+            
+                fetch(forecastWeather)
+                    .then(function (response) {
+                        if (response.ok) {
+                            console.log(response);
+                            response.json().then(function (data) {
+                            console.log(data);
+                            displayForecast(data);        
+                            });
+                        }; 
+                    }); 
+            } forecast(city);
         } else {
             alert("Error: Request not found.")
         }
@@ -71,36 +87,16 @@ var displayCity = function (city) {
     $("#weather-icon").attr("src", iconurl);
 };
 
-
-function forecast(city) {
-    var latitude = city.coord.lat;
-    var longitude = city.coord.lon;
-    var forecastWeather = "http://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey + "&units=" + units;
-
-    fetch(forecastWeather)
-        .then(function (response) {
-            if (response.ok) {
-                console.log(response);
-                response.json().then(function (data) {
-                console.log(data);
-                displayCity(data);        
-            });
-            } else {
-                alert("Error: Request not found.")
-        }
-    })
-}
-
 var displayForecast = function (city) {
     var forecastHTML = document.getElementsByClassName("forecast")[0];
     weatherDate = document.createElement("div");
-        weatherDate.textContent = currentDate;
+        weatherDate.textContent = city.list[0].dt_txt;
     temp = document.createElement("div");
-        temp.textContent = "Temperature: " + city.main.temp;
+        temp.textContent = "Temperature: " + city.list[0].main.temp;
     humidity = document.createElement("div");
-        humidity.textContent = "Humidity: " + city.main.humidity;
+        humidity.textContent = "Humidity: " + city.list[0].main.humidity;
     wind = document.createElement("div");
-     	wind.textContent = "Wind Speed: " + city.wind.speed;
+     	wind.textContent = "Wind Speed: " + city.list[0].wind.speed;
     forecastHTML.append(weatherDate);
     forecastHTML.append(temp);
     forecastHTML.append(humidity);
@@ -124,8 +120,9 @@ function renderCities() {
     }
 }
 
-var citySearch = cityInputEl.value;
+// var citySearch = cityInputEl.value;
 localStorage.setItem("city", city)
+// console.log(localStorage);
 renderCities();
 
 document.getElementById("form").addEventListener("submit", formSubmitHandler);
