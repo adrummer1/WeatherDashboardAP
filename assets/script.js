@@ -126,6 +126,8 @@ $(document).on("click", ".cities", function () {
     city = $(this).text();
     console.log($(this).text())
     $(city).on("click", getUserCity)
-    getUserCity();
+    getUserCity(city);
 });
+
+// localStorage.clear();
 
