@@ -83,17 +83,30 @@ h3 {
 }
 
 #history {
+    display: flex;
+    flex-direction:column;
     width: 25%;
     padding: 1rem;
     border: none;
 }
 
+#search-history {
+    font-size: 1.5rem;
+    text-align: left;
+}
+
 #forecast1 {
+    display: flex;
     width: 12%;
     padding: 1rem;
 }
 
+.forecast1 {
+    font-size: 1.2rem;
+}
+
 #forecast2 {
+    display: flex;
     width: 12%;
     padding: 1rem;
 }
@@ -104,11 +117,13 @@ h3 {
 }
 
 #forecast4 {
+    display: flex;
     width: 12%;
     padding: 1rem;
 }
 
 #forecast5 {
+    display: flex;
     width: 12%;
     padding: 1rem;
 }

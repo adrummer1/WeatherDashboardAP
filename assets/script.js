@@ -9,17 +9,20 @@ var apiBase = "api.openweathermap.org/data/2.5/";
 var units = "imperial";
 var currentDate = dayjs().format("dddd, MMM DD, YYYY")
 var searchHistory = []
+var city;
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
 
-    var city = cityInputEl.value.trim();
-
+    city = cityInputEl.value.trim();
+    
     if (city) {
         getUserCity(city);
-
-        // weatherNowEl.textContent = "";
-        // cityInputEl.textContent = "";
+        searchHistory.push(city);
+        console.log(searchHistory);
+        localStorage.setItem("city", JSON.stringify(searchHistory));
+        weatherNowEl.textContent = "";
+        cityInputEl.textContent = "";
     } else {
         alert("Please enter a city name.");
     }
@@ -88,42 +91,43 @@ var displayCity = function (city) {
 };
 
 var displayForecast = function (city) {
-    var forecastHTML = document.getElementsByClassName("forecast")[0];
+    var forecastHTML = document.getElementsByClassName("forecast1")[0];
     weatherDate = document.createElement("div");
-        weatherDate.textContent = city.list[0].dt_txt;
+        weatherDate.textContent = city.list[3].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
     temp = document.createElement("div");
-        temp.textContent = "Temperature: " + city.list[0].main.temp;
+        temp.textContent = "Temperature: " + city.list[3].main.temp;
     humidity = document.createElement("div");
-        humidity.textContent = "Humidity: " + city.list[0].main.humidity;
+        humidity.textContent = "Humidity: " + city.list[3].main.humidity;
     wind = document.createElement("div");
-     	wind.textContent = "Wind Speed: " + city.list[0].wind.speed;
+     	wind.textContent = "Wind Speed: " + city.list[3].wind.speed;
     forecastHTML.append(weatherDate);
     forecastHTML.append(temp);
     forecastHTML.append(humidity);
     forecastHTML.append(wind);
 };
 
-for (var i = 0; i < city.length; i++) {
-    var cityName = city[i].city.name;
-}
-
 function renderCities() {
-    searchHistory = JSON.parse(localStorage.getItem(city)) || [];
-    if (!city) {
-        return;
-    }
+    var storage = localStorage.getItem("city");
+    if (storage) {
+        searchHistory = JSON.parse(storage)
     for (var i = 0; i < searchHistory.length; i++) {
         var list = $("<p class='cities'>");
         list.attr("data", searchHistory[i]);
         list.text(searchHistory[i])
         $("#search-history").append(list);
     }
+    }  
 }
 
-// var citySearch = cityInputEl.value;
-localStorage.setItem("city", city)
 // console.log(localStorage);
 renderCities();
 
 document.getElementById("form").addEventListener("submit", formSubmitHandler);
+
+
+$(document).on("click", ".cities", function () {
+    city = $(this).text();
+    $(city).on("click", getUserCity)
+    getUserCity(); 
+});
 
