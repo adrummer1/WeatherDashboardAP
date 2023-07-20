@@ -19,9 +19,7 @@ var formSubmitHandler = function(event) {
     if (city) {
         getUserCity(city);
         searchHistory.push(city);
-        console.log(searchHistory);
         localStorage.setItem("city", JSON.stringify(searchHistory));
-        weatherNowEl.textContent = "";
         cityInputEl.textContent = "";
     } else {
         alert("Please enter a city name.");
@@ -119,7 +117,6 @@ function renderCities() {
     }  
 }
 
-// console.log(localStorage);
 renderCities();
 
 document.getElementById("form").addEventListener("submit", formSubmitHandler);
@@ -127,7 +124,8 @@ document.getElementById("form").addEventListener("submit", formSubmitHandler);
 
 $(document).on("click", ".cities", function () {
     city = $(this).text();
+    console.log($(this).text())
     $(city).on("click", getUserCity)
-    getUserCity(); 
+    getUserCity();
 });
 
