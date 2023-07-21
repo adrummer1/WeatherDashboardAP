@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+
 h1 {
     padding: 1rem;
     background-color: green;
@@ -95,35 +96,20 @@ h3 {
     text-align: left;
 }
 
-#forecast1 {
+#forecast-container {
     display: flex;
-    width: 12%;
-    padding: 1rem;
+    flex-direction: row;
+    width: 70%;
+    margin-left: 3rem;
 }
 
-.forecast1 {
-    font-size: 1.2rem;
-}
-
-#forecast2 {
+.forecast-card {
     display: flex;
-    width: 12%;
+    flex-direction: column;
+    width: 15%;
+    height: 50%;
     padding: 1rem;
-}
-
-#forecast3 {
-    width: 12%;
-    padding: 1rem;
-}
-
-#forecast4 {
-    display: flex;
-    width: 12%;
-    padding: 1rem;
-}
-
-#forecast5 {
-    display: flex;
-    width: 12%;
-    padding: 1rem;
+    border: .2rem solid green;
+    border-radius: 2rem;
+    margin-right: 2rem;
 }

@@ -91,18 +91,19 @@ var displayCity = function (city) {
 var displayForecast = function (city) {
     for (var j = 0; j < 5; j++) {
 
-        var forecastContainer = document.getElementByID('forecast-container');
+        var forecastContainer = document.getElementById('forecast-container');
 
         var forecastCard = document.createElement('div');
+        forecastCard.className = "forecast-card col-12 col-md-4";
         
         weatherDate = document.createElement('div');
-        weatherDate.textContent = city.list[j + 3].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
+        weatherDate.textContent = city.list[((j + 1) * 8) - 1].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
         temp = document.createElement('div');
-        temp.textContent = 'Temperature: ' + city.list[j + 3].main.temp;
+        temp.textContent = 'Temperature: ' + city.list[((j + 1) * 8) - 1].main.temp;
         humidity = document.createElement('div');
-        humidity.textContent = 'Humidity: ' + city.list[j + 3].main.humidity;
+        humidity.textContent = 'Humidity: ' + city.list[((j + 1) * 8) - 1].main.humidity;
         wind = document.createElement('div');
-     	wind.textContent = 'Wind Speed: ' + city.list[j + 3].wind.speed;
+     	wind.textContent = 'Wind Speed: ' + city.list[((j + 1) * 8) - 1].wind.speed;
         forecastCard.append(weatherDate);
         forecastCard.append(temp);
         forecastCard.append(humidity);
