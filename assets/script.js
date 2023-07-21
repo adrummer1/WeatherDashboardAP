@@ -90,24 +90,32 @@ var displayCity = function (city) {
 
 var displayForecast = function (city) {
     for (var j = 0; j < 5; j++) {
-    var forecastHTML = document.getElementsByClassName("forecast1")[0];
-    weatherDate = document.createElement("div");
-        weatherDate.textContent = city.list[j+3].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
-    temp = document.createElement("div");
-        temp.textContent = "Temperature: " + city.list[j+3].main.temp;
-    humidity = document.createElement("div");
-        humidity.textContent = "Humidity: " + city.list[j+3].main.humidity;
-    wind = document.createElement("div");
-     	wind.textContent = "Wind Speed: " + city.list[j+3].wind.speed;
-    forecastHTML.append(weatherDate);
-    forecastHTML.append(temp);
-    forecastHTML.append(humidity);
-    forecastHTML.append(wind);
-    var iconcode = city.weather[0].icon;
-        var iconurl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
-        $("#weather-icon").attr("src", iconurl);
+
+        var forecastContainer = document.getElementByID('forecast-container');
+
+        var forecastCard = document.createElement('div');
+        
+        weatherDate = document.createElement('div');
+        weatherDate.textContent = city.list[j + 3].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
+        temp = document.createElement('div');
+        temp.textContent = 'Temperature: ' + city.list[j + 3].main.temp;
+        humidity = document.createElement('div');
+        humidity.textContent = 'Humidity: ' + city.list[j + 3].main.humidity;
+        wind = document.createElement('div');
+     	wind.textContent = 'Wind Speed: ' + city.list[j + 3].wind.speed;
+        forecastCard.append(weatherDate);
+        forecastCard.append(temp);
+        forecastCard.append(humidity);
+        forecastCard.append(wind);
+
+        forecastContainer.append(forecastCard);
+        // var iconcode = city.weather[0].icon;
+        //     var iconurl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
+        //     $("#weather-icon").attr("src", iconurl);
+        // }
     }
-};
+}; 
+
 
 function renderCities() {
     var storage = localStorage.getItem("city");
