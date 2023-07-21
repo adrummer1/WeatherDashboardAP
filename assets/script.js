@@ -63,45 +63,50 @@ var displayCity = function (city) {
     if (city.length === 0) {
         weatherNowEl.textContent = "City not found.";
     return;
+    } else {
+        var currentWeatherHTML = document.getElementsByClassName("cityInfo")[0];
+        var cityName = document.createElement("div");
+            cityName.textContent = city.name;
+            cityName.style.cssText = "color:green;font-size:2rem";
+        var weatherDate = document.createElement("div");
+            weatherDate.textContent = currentDate;
+        var temp = document.createElement("div");
+            temp.textContent = "Temperature: " + city.main.temp;
+        var humidity = document.createElement("div");
+            humidity.textContent = "Humidity: " + city.main.humidity;
+        var wind = document.createElement("div");
+            wind.textContent = "Wind Speed: " + city.wind.speed;
+        currentWeatherHTML.append(cityName);
+        currentWeatherHTML.append(weatherDate);
+        currentWeatherHTML.append(temp);
+        currentWeatherHTML.append(humidity);
+        currentWeatherHTML.append(wind);
+
+        var iconcode = city.weather[0].icon;
+        var iconurl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
+        $("#weather-icon").attr("src", iconurl);
     }
-
-    var currentWeatherHTML = document.getElementsByClassName("cityInfo")[0];
-    var cityName = document.createElement("div");
-        cityName.textContent = city.name;
-        cityName.style.cssText = "color:green;font-size:2rem";
-    var weatherDate = document.createElement("div");
-        weatherDate.textContent = currentDate;
-    var temp = document.createElement("div");
-        temp.textContent = "Temperature: " + city.main.temp;
-    var humidity = document.createElement("div");
-        humidity.textContent = "Humidity: " + city.main.humidity;
-    var wind = document.createElement("div");
-        wind.textContent = "Wind Speed: " + city.wind.speed;
-    currentWeatherHTML.append(cityName);
-    currentWeatherHTML.append(weatherDate);
-    currentWeatherHTML.append(temp);
-    currentWeatherHTML.append(humidity);
-    currentWeatherHTML.append(wind);
-
-    var iconcode = city.weather[0].icon;
-    var iconurl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
-    $("#weather-icon").attr("src", iconurl);
 };
 
 var displayForecast = function (city) {
+    for (var j = 0; j < 5; j++) {
     var forecastHTML = document.getElementsByClassName("forecast1")[0];
     weatherDate = document.createElement("div");
-        weatherDate.textContent = city.list[3].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
+        weatherDate.textContent = city.list[j+3].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
     temp = document.createElement("div");
-        temp.textContent = "Temperature: " + city.list[3].main.temp;
+        temp.textContent = "Temperature: " + city.list[j+3].main.temp;
     humidity = document.createElement("div");
-        humidity.textContent = "Humidity: " + city.list[3].main.humidity;
+        humidity.textContent = "Humidity: " + city.list[j+3].main.humidity;
     wind = document.createElement("div");
-     	wind.textContent = "Wind Speed: " + city.list[3].wind.speed;
+     	wind.textContent = "Wind Speed: " + city.list[j+3].wind.speed;
     forecastHTML.append(weatherDate);
     forecastHTML.append(temp);
     forecastHTML.append(humidity);
     forecastHTML.append(wind);
+    var iconcode = city.weather[0].icon;
+        var iconurl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
+        $("#weather-icon").attr("src", iconurl);
+    }
 };
 
 function renderCities() {
@@ -113,7 +118,7 @@ function renderCities() {
         list.attr("data", searchHistory[i]);
         list.text(searchHistory[i])
         $("#search-history").append(list);
-    }
+        } 
     }  
 }
 
@@ -121,13 +126,17 @@ renderCities();
 
 document.getElementById("form").addEventListener("submit", formSubmitHandler);
 
-
 $(document).on("click", ".cities", function () {
     city = $(this).text();
-    console.log($(this).text())
     $(city).on("click", getUserCity)
     getUserCity(city);
 });
 
-// localStorage.clear();
+// function clearHistory (event) {
+//     event.preventDefault();
+//     searchHistory = [];
+//     localStorage.removeItem("city");
+//     document.location.reload();
+// }
 
+// localStorage.clear();
