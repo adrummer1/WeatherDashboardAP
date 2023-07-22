@@ -38,7 +38,8 @@ h1 {
 
 h3 {
     color: green;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.75rem;
 }
 
 .flex-row {
