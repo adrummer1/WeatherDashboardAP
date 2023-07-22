@@ -11,6 +11,7 @@ var currentDate = dayjs().format("dddd, MMM DD, YYYY")
 var searchHistory = []
 var city;
 
+// Event function for submitting the "city" form
 var formSubmitHandler = function(event) {
     event.preventDefault();
 
@@ -95,9 +96,10 @@ var displayForecast = function (city) {
 
         var forecastCard = document.createElement('div');
         forecastCard.className = "forecast-card col-12 col-md-4";
-        
-        // iconCode = city.list[((j + 1) * 8) - 1].weather[0].icon;
-        // iconUrl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
+        var icon = document.createElement('img');
+        iconCode = city.list[((j + 1) * 8) - 1].weather[0].icon;
+        iconUrl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
+        icon.setAttribute("src", iconUrl);
         weatherDate = document.createElement('div');
         weatherDate.textContent = city.list[((j + 1) * 8) - 1].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
         temp = document.createElement('div');
@@ -106,8 +108,8 @@ var displayForecast = function (city) {
         humidity.textContent = 'Humidity: ' + city.list[((j + 1) * 8) - 1].main.humidity;
         wind = document.createElement('div');
      	wind.textContent = 'Wind Speed: ' + city.list[((j + 1) * 8) - 1].wind.speed;
-        // forecastCard.append(iconCode);
         forecastCard.append(weatherDate);
+        forecastCard.append(icon);
         forecastCard.append(temp);
         forecastCard.append(humidity);
         forecastCard.append(wind);
