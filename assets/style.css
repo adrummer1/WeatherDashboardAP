@@ -72,6 +72,11 @@ h3 {
     border-radius: 2rem;
 }
 
+#city-name {
+    color:green;
+    font-size:2rem;
+}
+
 .cityInfo {
     padding: 1rem;
     font-size: 1.5rem;
