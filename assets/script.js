@@ -97,9 +97,9 @@ var displayForecast = function (city) {
         var temp = document.getElementById(forecastContainer.children[2].id)
         console.log(forecastContainer.children[2])
         var humid = document.getElementById(forecastContainer.children[3].id)
-        // console.log(humid)
+        console.log(humid)
         var wind = document.getElementById(forecastContainer.children[4].id)
-        // console.log(wind)
+        console.log(wind)
         // var forecastCard = document.createElement('div');
         // forecastCard.className = "forecast-card col-12 col-md-4";
         iconCode = city.list[((j + 1) * 8) - 1].weather[0].icon;
@@ -141,4 +141,4 @@ $(document).on("click", ".cities", function () {
 
 
 
-localStorage.clear();
+// localStorage.clear();

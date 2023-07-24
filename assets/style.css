@@ -109,6 +109,12 @@ h3 {
     margin-left: 3rem;
 }
 
+.forecast0 {
+    padding: 3rem;
+    border: .2rem solid green;
+    border-radius: 2rem;
+}
+
 .forecast-card {
     display: flex;
     flex-direction: column;
