@@ -29,7 +29,7 @@ var formSubmitHandler = function(event) {
 
 // API call to get the current weather data
 function getUserCity(city) {
-var currentWeather = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=" + units;
+var currentWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=" + units;
 
 fetch(currentWeather)
     .then(function (response) {
@@ -40,7 +40,7 @@ fetch(currentWeather)
             function forecast(city) {
                 var latitude = "city.coord.lat";
                 var longitude = "city.coord.lon";
-                var forecastWeather = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=" + units;
+                var forecastWeather = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=" + units;
             
                 fetch(forecastWeather)
                     .then(function (response) {
