@@ -67,6 +67,7 @@ h3 {
 
 .weather-today {
     width: 65%;
+    padding: 2rem;
     margin: 0 0 2rem 2rem;
     border: .2rem solid green;
     border-radius: 2rem;
@@ -110,38 +111,41 @@ h3 {
 }
 
 .forecast0 {
-    padding: 3rem;
+    padding: 2rem;
     border: .2rem solid green;
     border-radius: 2rem;
+    margin: 0 1rem 1rem 0;
 }
 
-.forecast-card {
-    display: flex;
-    flex-direction: column;
-    width: 15%;
-    height: auto;
-    padding: 1rem;
+.forecast1 {
+    padding: 2rem;
     border: .2rem solid green;
     border-radius: 2rem;
-    margin-right: 2rem;
-    line-height: 2rem;
-    font-size: 1.2rem;
+    margin: 0 1rem 1rem 0;
 }
 
-@media screen and (max-width: 1615px) {
-    .forecast-card {
-        flex-direction: column;
-        height: 100%;
-    }
-} 
+.forecast2 {
+    padding: 2rem;
+    border: .2rem solid green;
+    border-radius: 2rem;
+    margin: 0 1rem 1rem 0;
+}
 
-@media screen and (max-width: 1110px) {
-    .forecast-card {
-        flex-direction: column;
-        width: 50%;
-    }
-} 
+.forecast3 {
+    padding: 2rem;
+    border: .2rem solid green;
+    border-radius: 2rem;
+    margin: 0 1rem 1rem 0;
+}
 
+.forecast4 {
+    padding: 2rem;
+    border: .2rem solid green;
+    border-radius: 2rem;
+    margin: 0 1rem 1rem 0;
+}
+
+/* Display forecast as column on mobile */
 @media screen and (max-width: 720px) {
     #forecast-container {
         flex-direction: column;

@@ -34,9 +34,7 @@ var currentWeather = "http://api.openweathermap.org/data/2.5/weather?q=" + city 
 fetch(currentWeather)
     .then(function (response) {
         if (response.ok) {
-            console.log(response);
             response.json().then(function (data) {
-            console.log(data);
             displayCity(data);        
             });
             function forecast(city) {
@@ -49,7 +47,6 @@ fetch(currentWeather)
                         if (response.ok) {
                             console.log(response);
                             response.json().then(function (data) {
-                            console.log(data);
                             displayForecast(data);        
                             });
                         }; 
@@ -61,7 +58,7 @@ fetch(currentWeather)
     })
 }
 
-// Function to display the current weather for the city searched
+// Function to display the current weather for the city searched. I received some helpful feedback here through the Learning Assistant.
 var displayCity = function (city) {
     if (city.length === 0) {
         weatherNowEl.textContent = "City not found.";
@@ -75,60 +72,37 @@ var displayCity = function (city) {
             temp.textContent = "Temperature: " + city.main.temp;
         var humidity = document.getElementById("current-humid");
             humidity.textContent = "Humidity: " + city.main.humidity;
-            console.log(humidity);
         var wind = document.getElementById("current-wind");
             wind.textContent = "Wind Speed: " + city.wind.speed;
-            console.log(wind);
         var iconCode = city.weather[0].icon;
         var iconUrl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
         $("#weather-icon").attr("src", iconUrl);
     }
 };
 
-// Function and loop to create the five day forecast with forecast cards
+// Function and loop to create the five day forecast with forecast. I had some helpful coaching here from a tutor.
 var displayForecast = function (city) {
     for (var j = 0; j < 5; j++) {
 
         var forecastContainer = document.querySelector('.forecast' + [j]);
-        console.log(forecastContainer);
         var date = forecastContainer.children[0];
         var icon = forecastContainer.children[1];
         var temp = forecastContainer.children[2];
         var humid = forecastContainer.children[3];
         var wind = forecastContainer.children[4];
 
-        // Add date
+        // Add date, icon, temp, humidity, and wind to five day forecast
         date.textContent = city.list[((j + 1) * 8) - 1].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
-        // Add icon
         iconCode = city.list[((j + 1) * 8) - 1].weather[0].icon;
         iconUrl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
         icon.setAttribute("src", iconUrl);
         temp.textContent = 'Temperature: ' + city.list[((j + 1) * 8) - 1].main.temp;
         humid.textContent = 'Humidity: ' + city.list[((j + 1) * 8) - 1].main.humidity;
      	wind.textContent = 'Wind Speed: ' + city.list[((j + 1) * 8) - 1].wind.speed;
-
-
-        // console.log(forecastContainer.children)
-        // console.log(forecastContainer.children[0].id)
-        // var weatherDate = document.getElementById(forecastContainer.children[0].id)
-        // var icon = document.getElementById(forecastContainer.children[1].id)
-        // var temp = document.getElementById(forecastContainer.children[2].id)
-        // console.log(forecastContainer.children[2])
-        // var humid = document.getElementById(forecastContainer.children[3].id)
-        // console.log(humid)
-        // var wind = document.getElementById(forecastContainer.children[4].id)
-        // console.log(wind)
-        // iconCode = city.list[((j + 1) * 8) - 1].weather[0].icon;
-        // iconUrl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
-        // icon.setAttribute("src", iconUrl);
-        // weatherDate.textContent = city.list[((j + 1) * 8) - 1].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
-        // temp.textContent = 'Temperature: ' + city.list[((j + 1) * 8) - 1].main.temp;
-        // humid.textContent = 'Humidity: ' + city.list[((j + 1) * 8) - 1].main.humidity;
-     	// wind.textContent = 'Wind Speed: ' + city.list[((j + 1) * 8) - 1].wind.speed;
     }
 }; 
 
-// Function to render the searched cities from localStorage to the page
+// Function to render the searched cities from localStorage to the page search history
 function renderCities() {
     var storage = localStorage.getItem("city");
     if (storage) {
