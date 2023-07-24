@@ -90,25 +90,41 @@ var displayForecast = function (city) {
     for (var j = 0; j < 5; j++) {
 
         var forecastContainer = document.querySelector('.forecast' + [j]);
-        // console.log(forecastContainer.children)
-        // console.log(forecastContainer.children[0].id)
-        var weatherDate = document.getElementById(forecastContainer.children[0].id)
-        var icon = document.getElementById(forecastContainer.children[1].id)
-        var temp = document.getElementById(forecastContainer.children[2].id)
-        console.log(forecastContainer.children[2])
-        var humid = document.getElementById(forecastContainer.children[3].id)
-        console.log(humid)
-        var wind = document.getElementById(forecastContainer.children[4].id)
-        console.log(wind)
-        // var forecastCard = document.createElement('div');
-        // forecastCard.className = "forecast-card col-12 col-md-4";
+        console.log(forecastContainer);
+        var date = forecastContainer.children[0];
+        var icon = forecastContainer.children[1];
+        var temp = forecastContainer.children[2];
+        var humid = forecastContainer.children[3];
+        var wind = forecastContainer.children[4];
+
+        // Add date
+        date.textContent = city.list[((j + 1) * 8) - 1].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
+        // Add icon
         iconCode = city.list[((j + 1) * 8) - 1].weather[0].icon;
         iconUrl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
         icon.setAttribute("src", iconUrl);
-        weatherDate.textContent = city.list[((j + 1) * 8) - 1].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
         temp.textContent = 'Temperature: ' + city.list[((j + 1) * 8) - 1].main.temp;
         humid.textContent = 'Humidity: ' + city.list[((j + 1) * 8) - 1].main.humidity;
      	wind.textContent = 'Wind Speed: ' + city.list[((j + 1) * 8) - 1].wind.speed;
+
+
+        // console.log(forecastContainer.children)
+        // console.log(forecastContainer.children[0].id)
+        // var weatherDate = document.getElementById(forecastContainer.children[0].id)
+        // var icon = document.getElementById(forecastContainer.children[1].id)
+        // var temp = document.getElementById(forecastContainer.children[2].id)
+        // console.log(forecastContainer.children[2])
+        // var humid = document.getElementById(forecastContainer.children[3].id)
+        // console.log(humid)
+        // var wind = document.getElementById(forecastContainer.children[4].id)
+        // console.log(wind)
+        // iconCode = city.list[((j + 1) * 8) - 1].weather[0].icon;
+        // iconUrl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
+        // icon.setAttribute("src", iconUrl);
+        // weatherDate.textContent = city.list[((j + 1) * 8) - 1].dt_txt.replace(/(\d{4})\-(\d{2})\-(\d{2}).*/, '$2-$3-$1');
+        // temp.textContent = 'Temperature: ' + city.list[((j + 1) * 8) - 1].main.temp;
+        // humid.textContent = 'Humidity: ' + city.list[((j + 1) * 8) - 1].main.humidity;
+     	// wind.textContent = 'Wind Speed: ' + city.list[((j + 1) * 8) - 1].wind.speed;
     }
 }; 
 
