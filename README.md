@@ -17,5 +17,8 @@ For this application I utilized skills learned in Module 6, inluding using boots
 
 # Screenshot
 
+![Screenshot](./assets/ScreenshotWeatherApp.jpg)
 
 # Deployed Link
+
+[Here is a link to the deployed application](https://adrummer1.github.io/WeatherDashboardAP/)
