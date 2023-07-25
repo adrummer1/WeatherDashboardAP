@@ -78,6 +78,11 @@ h3 {
     font-size:2rem;
 }
 
+#current-date {
+    font-weight:bold;
+    font-size:1.2rem;
+}
+
 .cityInfo {
     padding: 1rem;
     font-size: 1.5rem;

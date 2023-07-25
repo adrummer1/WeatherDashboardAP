@@ -66,7 +66,7 @@ var displayCity = function (city) {
     } else {
         var cityName = document.getElementById("city-name");
             cityName.textContent = city.name;
-        var weatherDate = document.createElement("div");
+        var weatherDate = document.getElementById("current-date");
             weatherDate.textContent = currentDate;
         var temp = document.getElementById("current-temp");
             temp.textContent = "Temperature: " + city.main.temp;
