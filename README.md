@@ -7,7 +7,7 @@ Welcome to this Weather Dashboard! This is a simple application where users can 
 Users will find the following features with this application:
 
 * When a user opens the app they are presented with a search box and prompted to search for a city.
-* When a user searches for a city and submits, the application displays that city's current weather (weather icon, temperature, humidity and wind speen), as well as a five day forecast.
+* When a user searches for a city and submits, the application displays that city's current weather (weather icon, city name, current date, temperature, humidity and wind speen), as well as a five day forecast.
 * When a user refreshes the page it displays their search history from previous searches.
 * When a user clicks on any city in their search history it presents that city's weather again.
 
